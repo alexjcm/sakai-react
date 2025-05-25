@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import Layout from '../../layout/layout';
 
 interface AppLayoutProps {
@@ -6,10 +6,9 @@ interface AppLayoutProps {
 }
 
 export const metadata: Metadata = {
-    title: 'PrimeReact Sakai',
+    title: 'Sakai by PrimeReact | Free Admin Template for Next.js',
     description: 'The ultimate collection of design-agnostic, flexible and accessible React UI Components.',
     robots: { index: false, follow: false },
-    viewport: { initialScale: 1, width: 'device-width' },
     openGraph: {
         type: 'website',
         title: 'PrimeReact SAKAI-REACT',
@@ -21,6 +20,11 @@ export const metadata: Metadata = {
     icons: {
         icon: '/favicon.ico'
     }
+};
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1
 };
 
 export default function AppLayout({ children }: AppLayoutProps) {

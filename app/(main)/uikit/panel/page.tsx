@@ -1,21 +1,15 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
 import { SplitButton } from 'primereact/splitbutton';
 import { Accordion, AccordionTab } from 'primereact/accordion';
-import { TabView, TabPanel } from 'primereact/tabview';
-import { Panel } from 'primereact/panel';
-import { Fieldset } from 'primereact/fieldset';
-import { Card } from 'primereact/card';
 import { Divider } from 'primereact/divider';
 import { InputText } from 'primereact/inputtext';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
-import { Menu } from 'primereact/menu';
 
 const PanelDemo = () => {
-    const menu1 = useRef<Menu>(null);
     const toolbarItems = [
         {
             label: 'Save',
@@ -50,21 +44,6 @@ const PanelDemo = () => {
         );
     };
     const toolbarRightTemplate = <SplitButton label="Options" icon="pi pi-check" model={toolbarItems} menuStyle={{ width: '12rem' }}></SplitButton>;
-    const cardHeader = (
-        <div className="flex align-items-center justify-content-between mb-0 p-3 pb-0">
-            <h5 className="m-0">Card</h5>
-            <Button icon="pi pi-plus" text onClick={(event) => menu1.current?.toggle(event)} />
-            <Menu
-                ref={menu1}
-                popup
-                model={[
-                    { label: 'Add New', icon: 'pi pi-fw pi-plus' },
-                    { label: 'Remove', icon: 'pi pi-fw pi-minus' },
-                    { label: 'Update', icon: 'pi pi-fw pi-sync' }
-                ]}
-            />
-        </div>
-    );
 
     return (
         <div className="grid">
@@ -100,59 +79,6 @@ const PanelDemo = () => {
                         </AccordionTab>
                     </Accordion>
                 </div>
-                <div className="card">
-                    <h5>TabView</h5>
-                    <TabView>
-                        <TabPanel header="Header I">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                                id est laborum.
-                            </p>
-                        </TabPanel>
-                        <TabPanel header="Header II">
-                            <p>
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-                            </p>
-                        </TabPanel>
-                        <TabPanel header="Header III">
-                            <p>
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
-                                minus.
-                            </p>
-                        </TabPanel>
-                    </TabView>
-                </div>
-            </div>
-            <div className="col-12 md:col-6">
-                <div className="card">
-                    <h5>Panel</h5>
-                    <Panel header="Header" toggleable>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                            laborum.
-                        </p>
-                    </Panel>
-                </div>
-                <div className="card">
-                    <h5>Fieldset</h5>
-                    <Fieldset legend="Legend" toggleable>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                            laborum.
-                        </p>
-                    </Fieldset>
-                </div>
-                <Card header={cardHeader}>
-                    <p className="line-height-3 m-0">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </Card>
             </div>
 
             <div className="col-12">

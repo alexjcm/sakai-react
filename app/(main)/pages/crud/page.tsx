@@ -19,7 +19,7 @@ import { Demo } from '@/types';
 
 /* @todo Used 'as any' for types here. Will fix in next version due to onSelectionChange event type issue. */
 const Crud = () => {
-    let emptyProduct: Demo.Product = {
+    const emptyProduct: Demo.Product = {
         id: '',
         name: '',
         image: '',
@@ -76,8 +76,8 @@ const Crud = () => {
         setSubmitted(true);
 
         if (product.name.trim()) {
-            let _products = [...(products as any)];
-            let _product = { ...product };
+            const _products = [...(products as any)];
+            const _product = { ...product };
             if (product.id) {
                 const index = findIndexById(product.id);
 
@@ -117,7 +117,7 @@ const Crud = () => {
     };
 
     const deleteProduct = () => {
-        let _products = (products as any)?.filter((val: any) => val.id !== product.id);
+        const _products = (products as any)?.filter((val: any) => val.id !== product.id);
         setProducts(_products);
         setDeleteProductDialog(false);
         setProduct(emptyProduct);
@@ -143,7 +143,7 @@ const Crud = () => {
 
     const createId = () => {
         let id = '';
-        let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         for (let i = 0; i < 5; i++) {
             id += chars.charAt(Math.floor(Math.random() * chars.length));
         }
@@ -159,7 +159,7 @@ const Crud = () => {
     };
 
     const deleteSelectedProducts = () => {
-        let _products = (products as any)?.filter((val: any) => !(selectedProducts as any)?.includes(val));
+        const _products = (products as any)?.filter((val: any) => !(selectedProducts as any)?.includes(val));
         setProducts(_products);
         setDeleteProductsDialog(false);
         setSelectedProducts(null);
@@ -172,14 +172,14 @@ const Crud = () => {
     };
 
     const onCategoryChange = (e: RadioButtonChangeEvent) => {
-        let _product = { ...product };
+        const _product = { ...product };
         _product['category'] = e.value;
         setProduct(_product);
     };
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, name: string) => {
         const val = (e.target && e.target.value) || '';
-        let _product = { ...product };
+        const _product = { ...product };
         _product[`${name}`] = val;
 
         setProduct(_product);
@@ -187,7 +187,7 @@ const Crud = () => {
 
     const onInputNumberChange = (e: InputNumberValueChangeEvent, name: string) => {
         const val = e.value || 0;
-        let _product = { ...product };
+        const _product = { ...product };
         _product[`${name}`] = val;
 
         setProduct(_product);

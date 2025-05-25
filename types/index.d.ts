@@ -2,7 +2,6 @@ import React, { ReactNode } from 'react';
 import {
     Page,
     AppBreadcrumbProps,
-    Breadcrumb,
     BreadcrumbItem,
     MenuProps,
     MenuModel,
@@ -14,8 +13,6 @@ import {
     LayoutContextProps,
     MailContextProps,
     MenuContextProps,
-    ChatContextProps,
-    TaskContextProps,
     AppConfigProps,
     NodeRef,
     AppTopbarRef,
@@ -23,7 +20,7 @@ import {
     AppMenuItemProps,
     AppMenuItem
 } from './layout';
-import { Demo, LayoutType, SortOrderType, CustomEvent, ChartDataState, ChartOptionsState, AppMailSidebarItem, AppMailReplyProps, AppMailProps } from './demo';
+import { Demo, LayoutType, SortOrderType, CustomEvent, AppMailSidebarItem, AppMailReplyProps, AppMailProps } from './demo';
 
 type ChildContainerProps = {
     children: ReactNode;
@@ -32,7 +29,6 @@ type ChildContainerProps = {
 export type {
     Page,
     AppBreadcrumbProps,
-    Breadcrumb,
     BreadcrumbItem,
     MenuProps,
     MenuModel,
@@ -42,8 +38,6 @@ export type {
     LayoutContextProps,
     MailContextProps,
     MenuContextProps,
-    ChatContextProps,
-    TaskContextProps,
     AppConfigProps,
     NodeRef,
     AppTopbarRef,
@@ -53,8 +47,6 @@ export type {
     LayoutType,
     SortOrderType,
     CustomEvent,
-    ChartDataState,
-    ChartOptionsState,
     AppMailSidebarItem,
     AppMailReplyProps,
     AppMailProps,

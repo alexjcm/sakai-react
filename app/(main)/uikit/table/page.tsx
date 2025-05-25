@@ -1,17 +1,15 @@
 'use client';
 import { CustomerService } from '../../../../demo/service/CustomerService';
-import { ProductService } from '../../../../demo/service/ProductService';
 import { FilterMatchMode, FilterOperator } from 'primereact/api';
 import { Button } from 'primereact/button';
 import { Calendar } from 'primereact/calendar';
 import { Column, ColumnFilterApplyTemplateOptions, ColumnFilterClearTemplateOptions, ColumnFilterElementTemplateOptions } from 'primereact/column';
-import { DataTable, DataTableExpandedRows, DataTableFilterMeta } from 'primereact/datatable';
+import { DataTable, DataTableFilterMeta } from 'primereact/datatable';
 import { Dropdown } from 'primereact/dropdown';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from 'primereact/inputtext';
 import { MultiSelect } from 'primereact/multiselect';
 import { ProgressBar } from 'primereact/progressbar';
-import { Rating } from 'primereact/rating';
 import { Slider } from 'primereact/slider';
 import { ToggleButton } from 'primereact/togglebutton';
 import { TriStateCheckbox } from 'primereact/tristatecheckbox';
@@ -22,15 +20,11 @@ import type { Demo } from '@/types';
 const TableDemo = () => {
     const [customers1, setCustomers1] = useState<Demo.Customer[]>([]);
     const [customers2, setCustomers2] = useState<Demo.Customer[]>([]);
-    const [customers3, setCustomers3] = useState<Demo.Customer[]>([]);
     const [filters1, setFilters1] = useState<DataTableFilterMeta>({});
     const [loading1, setLoading1] = useState(true);
     const [loading2, setLoading2] = useState(true);
     const [idFrozen, setIdFrozen] = useState(false);
-    const [products, setProducts] = useState<Demo.Product[]>([]);
     const [globalFilterValue1, setGlobalFilterValue1] = useState('');
-    const [expandedRows, setExpandedRows] = useState<any[] | DataTableExpandedRows>([]);
-    const [allExpanded, setAllExpanded] = useState(false);
 
     const representatives = [
         { name: 'Amy Elsner', image: 'amyelsner.png' },
@@ -53,7 +47,7 @@ const TableDemo = () => {
 
     const onGlobalFilterChange1 = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
-        let _filters1 = { ...filters1 };
+        const _filters1 = { ...filters1 };
         (_filters1['global'] as any).value = value;
 
         setFilters1(_filters1);
@@ -83,8 +77,6 @@ const TableDemo = () => {
             setCustomers2(getCustomers(data));
             setLoading2(false);
         });
-        CustomerService.getCustomersMedium().then((data) => setCustomers3(data));
-        ProductService.getProductsWithOrdersSmall().then((data) => setProducts(data));
 
         initFilters1();
     }, []);
@@ -259,104 +251,6 @@ const TableDemo = () => {
         return <TriStateCheckbox value={options.value} onChange={(e) => options.filterCallback(e.value)} />;
     };
 
-    const toggleAll = () => {
-        if (allExpanded) collapseAll();
-        else expandAll();
-    };
-
-    const expandAll = () => {
-        let _expandedRows = {} as { [key: string]: boolean };
-        products.forEach((p) => (_expandedRows[`${p.id}`] = true));
-
-        setExpandedRows(_expandedRows);
-        setAllExpanded(true);
-    };
-
-    const collapseAll = () => {
-        setExpandedRows([]);
-        setAllExpanded(false);
-    };
-
-    const amountBodyTemplate = (rowData: Demo.Customer) => {
-        return formatCurrency(rowData.amount as number);
-    };
-
-    const statusOrderBodyTemplate = (rowData: Demo.Customer) => {
-        return <span className={`order-badge order-${rowData.status?.toLowerCase()}`}>{rowData.status}</span>;
-    };
-
-    const searchBodyTemplate = () => {
-        return <Button icon="pi pi-search" />;
-    };
-
-    const imageBodyTemplate = (rowData: Demo.Product) => {
-        return <img src={`/demo/images/product/${rowData.image}`} onError={(e) => ((e.target as HTMLImageElement).src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png')} alt={rowData.image} className="shadow-2" width={100} />;
-    };
-
-    const priceBodyTemplate = (rowData: Demo.Product) => {
-        return formatCurrency(rowData.price as number);
-    };
-
-    const ratingBodyTemplate = (rowData: Demo.Product) => {
-        return <Rating value={rowData.rating} readOnly cancel={false} />;
-    };
-
-    const statusBodyTemplate2 = (rowData: Demo.Product) => {
-        return <span className={`product-badge status-${rowData.inventoryStatus?.toLowerCase()}`}>{rowData.inventoryStatus}</span>;
-    };
-
-    const rowExpansionTemplate = (data: Demo.Product) => {
-        return (
-            <div className="orders-subtable">
-                <h5>Orders for {data.name}</h5>
-                <DataTable value={data.orders} responsiveLayout="scroll">
-                    <Column field="id" header="Id" sortable></Column>
-                    <Column field="customer" header="Customer" sortable></Column>
-                    <Column field="date" header="Date" sortable></Column>
-                    <Column field="amount" header="Amount" body={amountBodyTemplate} sortable></Column>
-                    <Column field="status" header="Status" body={statusOrderBodyTemplate} sortable></Column>
-                    <Column headerStyle={{ width: '4rem' }} body={searchBodyTemplate}></Column>
-                </DataTable>
-            </div>
-        );
-    };
-
-    const header = <Button icon={allExpanded ? 'pi pi-minus' : 'pi pi-plus'} label={allExpanded ? 'Collapse All' : 'Expand All'} onClick={toggleAll} className="w-11rem" />;
-
-    const headerTemplate = (data: Demo.Customer) => {
-        return (
-            <React.Fragment>
-                <img alt={data.representative.name} src={`/demo/images/avatar/${data.representative.image}`} width="32" style={{ verticalAlign: 'middle' }} />
-                <span className="font-bold ml-2">{data.representative.name}</span>
-            </React.Fragment>
-        );
-    };
-
-    const footerTemplate = (data: Demo.Customer) => {
-        return (
-            <React.Fragment>
-                <td colSpan={4} style={{ textAlign: 'right' }} className="text-bold pr-6">
-                    Total Customers
-                </td>
-                <td>{calculateCustomerTotal(data.representative.name)}</td>
-            </React.Fragment>
-        );
-    };
-
-    const calculateCustomerTotal = (name: string) => {
-        let total = 0;
-
-        if (customers3) {
-            for (let customer of customers3) {
-                if (customer.representative.name === name) {
-                    total++;
-                }
-            }
-        }
-
-        return total;
-    };
-
     const header1 = renderHeader1();
 
     return (
@@ -418,45 +312,6 @@ const TableDemo = () => {
                 </div>
             </div>
 
-            <div className="col-12">
-                <div className="card">
-                    <h5>Row Expand</h5>
-                    <DataTable value={products} expandedRows={expandedRows} onRowToggle={(e) => setExpandedRows(e.data)} responsiveLayout="scroll" rowExpansionTemplate={rowExpansionTemplate} dataKey="id" header={header}>
-                        <Column expander style={{ width: '3em' }} />
-                        <Column field="name" header="Name" sortable />
-                        <Column header="Image" body={imageBodyTemplate} />
-                        <Column field="price" header="Price" sortable body={priceBodyTemplate} />
-                        <Column field="category" header="Category" sortable />
-                        <Column field="rating" header="Reviews" sortable body={ratingBodyTemplate} />
-                        <Column field="inventoryStatus" header="Status" sortable body={statusBodyTemplate2} />
-                    </DataTable>
-                </div>
-            </div>
-
-            <div className="col-12">
-                <div className="card">
-                    <h5>Subheader Grouping</h5>
-                    <DataTable
-                        value={customers3}
-                        rowGroupMode="subheader"
-                        groupRowsBy="representative.name"
-                        sortMode="single"
-                        sortField="representative.name"
-                        sortOrder={1}
-                        scrollable
-                        scrollHeight="400px"
-                        rowGroupHeaderTemplate={headerTemplate}
-                        rowGroupFooterTemplate={footerTemplate}
-                        responsiveLayout="scroll"
-                    >
-                        <Column field="name" header="Name" style={{ minWidth: '200px' }}></Column>
-                        <Column field="country" header="Country" body={countryBodyTemplate} style={{ minWidth: '200px' }}></Column>
-                        <Column field="company" header="Company" style={{ minWidth: '200px' }}></Column>
-                        <Column field="status" header="Status" body={statusBodyTemplate} style={{ minWidth: '200px' }}></Column>
-                        <Column field="date" header="Date" style={{ minWidth: '200px' }}></Column>
-                    </DataTable>
-                </div>
-            </div>
         </div>
     );
 };

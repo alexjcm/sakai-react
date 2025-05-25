@@ -8,7 +8,9 @@ export const LayoutProvider = ({ children }: ChildContainerProps) => {
         ripple: false,
         inputStyle: 'outlined',
         menuMode: 'static',
-        colorScheme: 'light',
+        style: 'lara',
+        darkMode: 'light',
+        color: 'indigo',
         theme: 'lara-light-indigo',
         scale: 14
     });

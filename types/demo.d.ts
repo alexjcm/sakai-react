@@ -1,9 +1,6 @@
 /* FullCalendar Types */
 import { EventApi, EventInput } from '@fullcalendar/core';
 
-/* Chart.js Types */
-import { ChartData, ChartOptions } from 'chart.js';
-
 type InventoryStatus = 'INSTOCK' | 'LOWSTOCK' | 'OUTOFSTOCK';
 
 type Status = 'DELIVERED' | 'PENDING' | 'RETURNED' | 'CANCELLED';
@@ -28,21 +25,6 @@ interface ShowOptions {
     life?: number;
 }
 
-export interface ChartDataState {
-    barData?: ChartData;
-    pieData?: ChartData;
-    lineData?: ChartData;
-    polarData?: ChartData;
-    radarData?: ChartData;
-}
-export interface ChartOptionsState {
-    barOptions?: ChartOptions;
-    pieOptions?: ChartOptions;
-    lineOptions?: ChartOptions;
-    polarOptions?: ChartOptions;
-    radarOptions?: ChartOptions;
-}
-
 export interface AppMailProps {
     mails: Demo.Mail[];
 }
@@ -61,30 +43,6 @@ export interface AppMailReplyProps {
 }
 
 declare namespace Demo {
-    interface Task {
-        id?: number;
-        name?: string;
-        description?: string;
-        completed?: boolean;
-        status?: string;
-        comments?: string;
-        attachments?: string;
-        members?: Member[];
-        startDate?: string;
-        endDate?: string;
-    }
-
-    interface Member {
-        name: string;
-        image: string;
-    }
-
-    interface DialogConfig {
-        visible: boolean;
-        header: string;
-        newTask: boolean;
-    }
-
     interface Mail {
         id: number;
         from: string;
@@ -100,21 +58,6 @@ declare namespace Demo {
         spam: boolean;
         archived: boolean;
         sent: boolean;
-    }
-
-    interface User {
-        id: number;
-        name: string;
-        image: string;
-        status: string;
-        messages: Message[];
-        lastSeen: string;
-    }
-
-    interface Message {
-        text: string;
-        ownerId: number;
-        createdAt: number;
     }
 
     //ProductService
@@ -141,13 +84,6 @@ declare namespace Demo {
         quantity?: number;
         customer?: string;
         status?: Status;
-    };
-
-    type Payment = {
-        name: string;
-        amount: number;
-        paid: boolean;
-        date: string;
     };
 
     //CustomerService
@@ -193,28 +129,5 @@ declare namespace Demo {
     type Country = {
         name: string;
         code: string;
-    };
-
-    // IconService
-    type Icon = {
-        icon?: {
-            paths?: string[];
-            attrs?: [{}];
-            isMulticolor?: boolean;
-            isMulticolor2?: boolean;
-            grid?: number;
-            tags?: string[];
-        };
-        attrs?: [{}];
-        properties?: {
-            order?: number;
-            id: number;
-            name: string;
-            prevSize?: number;
-            code?: number;
-        };
-        setIdx?: number;
-        setId?: number;
-        iconIdx?: number;
     };
 }

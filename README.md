@@ -16,6 +16,12 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## TODO
+
+Al migrar a una version superior hay alteracion en ciertos estilos
+  "primereact": "10.5.1"
+
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

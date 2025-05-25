@@ -33,7 +33,9 @@ export type LayoutConfig = {
     ripple: boolean;
     inputStyle: string;
     menuMode: string;
-    colorScheme: string;
+    style: string;
+    darkMode: string;
+    color: string;
     theme: string;
     scale: number;
 };
