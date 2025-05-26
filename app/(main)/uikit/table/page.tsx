@@ -1,5 +1,7 @@
 'use client';
+import React, { useEffect, useState } from 'react';
 import { CustomerService } from '../../../../demo/service/CustomerService';
+import { ProductService } from '../../../../demo/service/ProductService';
 import { FilterMatchMode, FilterOperator } from 'primereact/api';
 import { Button } from 'primereact/button';
 import { Calendar } from 'primereact/calendar';
@@ -11,20 +13,16 @@ import { InputText } from 'primereact/inputtext';
 import { MultiSelect } from 'primereact/multiselect';
 import { ProgressBar } from 'primereact/progressbar';
 import { Slider } from 'primereact/slider';
-import { ToggleButton } from 'primereact/togglebutton';
 import { TriStateCheckbox } from 'primereact/tristatecheckbox';
 import { classNames } from 'primereact/utils';
-import React, { useEffect, useState } from 'react';
 import type { Demo } from '@/types';
 
 const TableDemo = () => {
     const [customers1, setCustomers1] = useState<Demo.Customer[]>([]);
-    const [customers2, setCustomers2] = useState<Demo.Customer[]>([]);
     const [filters1, setFilters1] = useState<DataTableFilterMeta>({});
     const [loading1, setLoading1] = useState(true);
-    const [loading2, setLoading2] = useState(true);
-    const [idFrozen, setIdFrozen] = useState(false);
     const [globalFilterValue1, setGlobalFilterValue1] = useState('');
+    const [products, setProducts] = useState<Demo.Product[]>([]);
 
     const representatives = [
         { name: 'Amy Elsner', image: 'amyelsner.png' },
@@ -67,27 +65,16 @@ const TableDemo = () => {
     };
 
     useEffect(() => {
-        setLoading2(true);
-
         CustomerService.getCustomersLarge().then((data) => {
             setCustomers1(getCustomers(data));
             setLoading1(false);
         });
-        CustomerService.getCustomersLarge().then((data) => {
-            setCustomers2(getCustomers(data));
-            setLoading2(false);
-        });
-
         initFilters1();
     }, []);
 
-    const balanceTemplate = (rowData: Demo.Customer) => {
-        return (
-            <div>
-                <span className="text-bold">{formatCurrency(rowData.balance as number)}</span>
-            </div>
-        );
-    };
+    useEffect(() => {
+        ProductService.getProductsSmall().then((data) => setProducts(data));
+    }, []);
 
     const getCustomers = (data: Demo.Customer[]) => {
         return [...(data || [])].map((d) => {
@@ -295,23 +282,23 @@ const TableDemo = () => {
 
             <div className="col-12">
                 <div className="card">
-                    <h5>Frozen Columns</h5>
-                    <ToggleButton checked={idFrozen} onChange={(e) => setIdFrozen(e.value)} onIcon="pi pi-lock" offIcon="pi pi-lock-open" onLabel="Unfreeze Id" offLabel="Freeze Id" style={{ width: '10rem' }} />
-
-                    <DataTable value={customers2} scrollable scrollHeight="400px" loading={loading2} className="mt-3">
-                        <Column field="name" header="Name" style={{ flexGrow: 1, flexBasis: '160px' }} frozen className="font-bold"></Column>
-                        <Column field="id" header="Id" style={{ flexGrow: 1, flexBasis: '100px' }} frozen={idFrozen} alignFrozen="left" bodyClassName={classNames({ 'font-bold': idFrozen })}></Column>
-                        <Column field="country.name" header="Country" style={{ flexGrow: 1, flexBasis: '200px' }} body={countryBodyTemplate}></Column>
-                        <Column field="date" header="Date" style={{ flexGrow: 1, flexBasis: '200px' }} body={dateBodyTemplate}></Column>
-                        <Column field="company" header="Company" style={{ flexGrow: 1, flexBasis: '200px' }}></Column>
-                        <Column field="status" header="Status" style={{ flexGrow: 1, flexBasis: '200px' }} body={statusBodyTemplate}></Column>
-                        <Column field="activity" header="Activity" style={{ flexGrow: 1, flexBasis: '200px' }}></Column>
-                        <Column field="representative.name" header="Representative" style={{ flexGrow: 1, flexBasis: '200px' }} body={representativeBodyTemplate}></Column>
-                        <Column field="balance" header="Balance" body={balanceTemplate} frozen style={{ flexGrow: 1, flexBasis: '120px' }} className="font-bold" alignFrozen="right"></Column>
+                    <h5>Recent Sales</h5>
+                    <DataTable value={products} rows={5} paginator responsiveLayout="scroll">
+                        <Column header="Image" body={(data) => <img className="shadow-2" src={`/demo/images/product/${data.image}`} alt={data.image} width="50" />} />
+                        <Column field="name" header="Name" sortable style={{ width: '35%' }} />
+                        <Column field="price" header="Price" sortable style={{ width: '35%' }} body={(data) => formatCurrency(data.price)} />
+                        <Column
+                            header="View"
+                            style={{ width: '15%' }}
+                            body={() => (
+                                <>
+                                    <Button icon="pi pi-search" text />
+                                </>
+                            )}
+                        />
                     </DataTable>
                 </div>
             </div>
-
         </div>
     );
 };

@@ -5,7 +5,6 @@ import { Column } from 'primereact/column';
 import { confirmPopup, ConfirmPopup } from 'primereact/confirmpopup';
 import { DataTable, DataTableSelectEvent } from 'primereact/datatable';
 import { Dialog } from 'primereact/dialog';
-import { InputText } from 'primereact/inputtext';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { Sidebar } from 'primereact/sidebar';
 import { Toast } from 'primereact/toast';
@@ -193,18 +192,6 @@ const OverlayDemo = () => {
                     </div>
                 </div>
 
-                <div className="col-12 lg:col-6">
-                    <div className="card">
-                        <h5>Tooltip</h5>
-                        <div className="flex align-items-center gap-2">
-                            <span>
-                                <InputText type="text" placeholder="Username" tooltip="Your username" />
-                            </span>
-
-                            <Button type="button" label="Save" icon="pi pi-check" tooltip="Click to proceed" />
-                        </div>
-                    </div>
-                </div>
                 <div className="col-12 lg:col-6">
                     <Toast ref={toast} />
 

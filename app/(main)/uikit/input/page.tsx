@@ -2,15 +2,11 @@
 import type { Demo, Page } from '@/types';
 import { AutoComplete, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 import { Button } from 'primereact/button';
-import { Calendar } from 'primereact/calendar';
 import { Checkbox, CheckboxChangeEvent } from 'primereact/checkbox';
 import { Chips } from 'primereact/chips';
 import { ColorPicker, ColorPickerHSBType, ColorPickerRGBType } from 'primereact/colorpicker';
 import { Dropdown } from 'primereact/dropdown';
-import { InputNumber } from 'primereact/inputnumber';
-import { InputSwitch } from 'primereact/inputswitch';
 import { InputText } from 'primereact/inputtext';
-import { InputTextarea } from 'primereact/inputtextarea';
 import { Knob } from 'primereact/knob';
 import { ListBox } from 'primereact/listbox';
 import { MultiSelect } from 'primereact/multiselect';
@@ -32,8 +28,6 @@ const InputDemo: Page = () => {
     const [autoValue, setAutoValue] = useState<Demo.Country[]>([]);
     const [selectedAutoValue, setSelectedAutoValue] = useState<Demo.Country[]>([]);
     const [autoFilteredValue, setAutoFilteredValue] = useState<Demo.Country[]>([]);
-    const [calendarValue, setCalendarValue] = useState<any>(null);
-    const [inputNumberValue, setInputNumberValue] = useState<number | null>(null);
     const [chipsValue, setChipsValue] = useState<any[]>([]);
     const [sliderValue, setSliderValue] = useState<number | string>('');
     const [ratingValue, setRatingValue] = useState<number | null>(null);
@@ -41,7 +35,6 @@ const InputDemo: Page = () => {
     const [knobValue, setKnobValue] = useState(20);
     const [radioValue, setRadioValue] = useState(null);
     const [checkboxValue, setCheckboxValue] = useState<string[]>([]);
-    const [switchValue, setSwitchValue] = useState(false);
     const [listboxValue, setListboxValue] = useState(null);
     const [dropdownValue, setDropdownValue] = useState(null);
     const [multiselectValue, setMultiselectValue] = useState(null);
@@ -178,17 +171,8 @@ const InputDemo: Page = () => {
                         <label htmlFor="username">Username</label>
                     </span>
 
-                    <h5>Textarea</h5>
-                    <InputTextarea placeholder="Your Message" rows={5} cols={30} />
-
                     <h5>AutoComplete</h5>
                     <AutoComplete placeholder="Search" id="dd" dropdown multiple value={selectedAutoValue} onChange={(e) => setSelectedAutoValue(e.value)} suggestions={autoFilteredValue} completeMethod={searchCountry} field="name" />
-
-                    <h5>Calendar</h5>
-                    <Calendar showIcon showButtonBar value={calendarValue} onChange={(e) => setCalendarValue(e.value ?? null)} />
-
-                    <h5>InputNumber</h5>
-                    <InputNumber value={inputNumberValue} onValueChange={(e) => setInputNumberValue(e.value ?? null)} showButtons mode="decimal"></InputNumber>
 
                     <h5>Chips</h5>
                     <Chips value={chipsValue} onChange={(e) => setChipsValue(e.value ?? [])} />
@@ -263,8 +247,6 @@ const InputDemo: Page = () => {
                         </div>
                     </div>
 
-                    <h5>Input Switch</h5>
-                    <InputSwitch checked={switchValue} onChange={(e) => setSwitchValue(e.value ?? false)} />
                 </div>
 
                 <div className="card">

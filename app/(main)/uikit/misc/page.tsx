@@ -8,7 +8,6 @@ import { Tag } from 'primereact/tag';
 import { Avatar } from 'primereact/avatar';
 import { AvatarGroup } from 'primereact/avatargroup';
 import { Chip } from 'primereact/chip';
-import { Skeleton } from 'primereact/skeleton';
 
 const MiscDemo = () => {
     const [value, setValue] = useState(0);
@@ -175,25 +174,6 @@ const MiscDemo = () => {
                         <Chip label="Apple" icon="pi pi-apple" />
                         <Chip label="Onyama Limba" image={`/demo/images/avatar/onyamalimba.png`} />
                         <Chip label="Xuxue Feng" image={`/demo/images/avatar/xuxuefeng.png`} removable />
-                    </div>
-                </div>
-
-                <div className="card">
-                    <h4>Skeleton</h4>
-                    <div className="border-round border-1 surface-border p-4">
-                        <div className="flex mb-3">
-                            <Skeleton shape="circle" size="4rem" className="mr-2"></Skeleton>
-                            <div>
-                                <Skeleton width="10rem" className="mb-2"></Skeleton>
-                                <Skeleton width="5rem" className="mb-2"></Skeleton>
-                                <Skeleton height=".5rem"></Skeleton>
-                            </div>
-                        </div>
-                        <Skeleton width="100%" height="150px"></Skeleton>
-                        <div className="flex justify-content-between mt-3">
-                            <Skeleton width="4rem" height="2rem"></Skeleton>
-                            <Skeleton width="4rem" height="2rem"></Skeleton>
-                        </div>
                     </div>
                 </div>
             </div>

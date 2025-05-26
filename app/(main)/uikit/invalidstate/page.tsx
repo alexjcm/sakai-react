@@ -8,7 +8,6 @@ import { Dropdown } from 'primereact/dropdown';
 import { InputMask } from 'primereact/inputmask';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from 'primereact/inputtext';
-import { InputTextarea } from 'primereact/inputtextarea';
 import { MultiSelect } from 'primereact/multiselect';
 import { Password } from 'primereact/password';
 import { useEffect, useState } from 'react';
@@ -26,7 +25,6 @@ const InvalidStateDemo = () => {
     const [value7, setValue7] = useState(0);
     const [value8, setValue8] = useState(null);
     const [value9, setValue9] = useState(null);
-    const [value10, setValue10] = useState('');
 
     const cities = [
         { name: 'New York', code: 'NY' },
@@ -103,10 +101,6 @@ const InvalidStateDemo = () => {
                     <div className="field">
                         <label htmlFor="multiselect">MultiSelect</label>
                         <MultiSelect id="multiselect" options={cities} value={value9} onChange={(e) => setValue9(e.value)} optionLabel="name" className="p-invalid" />
-                    </div>
-                    <div className="field">
-                        <label htmlFor="textarea">Textarea</label>
-                        <InputTextarea id="textarea" rows={3} cols={30} value={value10} onChange={(e) => setValue10(e.target.value)} className="p-invalid" />
                     </div>
                 </div>
             </div>

@@ -97,7 +97,6 @@ const AppConfig = (props: AppConfigProps) => {
 
     useEffect(() => {
         document.documentElement.style.fontSize = layoutConfig.scale + 'px';
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [layoutConfig.scale]);
 
     useEffect(() => {
@@ -105,7 +104,7 @@ const AppConfig = (props: AppConfigProps) => {
             let tokens = layoutConfig.theme.split('-');
             switchTheme(tokens[0].substring(0, 2), tokens[2]);
         }
-    }, [compactMaterial]); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [compactMaterial]);
 
     return (
         <>
@@ -153,6 +152,16 @@ const AppConfig = (props: AppConfigProps) => {
                 <h5>Lara hemes</h5>
                 <div className="grid">
                     <div className="col-3">
+                        <button className="p-link w-2rem h-2rem" onClick={() => switchTheme('lara', 'cyan')}>
+                            <img src="https://primefaces.org/cdn/primereact/images/themes/lara-light-teal.png" className="w-2rem h-2rem" alt="Lara Light cyan" />
+                        </button>
+                    </div>
+                    <div className="col-3">
+                        <button className="p-link w-2rem h-2rem" onClick={() => switchTheme('lara', 'teal')}>
+                            <img src="https://primefaces.org/cdn/primereact/images/themes/lara-light-teal.png" className="w-2rem h-2rem" alt="Lara Light Teal" />
+                        </button>
+                    </div>
+                    <div className="col-3">
                         <button className="p-link w-2rem h-2rem" onClick={() => switchTheme('lara', 'indigo')}>
                             <img src="https://primefaces.org/cdn/primereact/images/themes/lara-light-indigo.png" className="w-2rem h-2rem" alt="Lara Light Indigo" />
                         </button>
@@ -165,16 +174,6 @@ const AppConfig = (props: AppConfigProps) => {
                     <div className="col-3">
                         <button className="p-link w-2rem h-2rem" onClick={() => switchTheme('lara', 'purple')}>
                             <img src="https://primefaces.org/cdn/primereact/images/themes/lara-light-purple.png" className="w-2rem h-2rem" alt="Lara Light Purple" />
-                        </button>
-                    </div>
-                    <div className="col-3">
-                        <button className="p-link w-2rem h-2rem" onClick={() => switchTheme('lara', 'teal')}>
-                            <img src="https://primefaces.org/cdn/primereact/images/themes/lara-light-teal.png" className="w-2rem h-2rem" alt="Lara Light Teal" />
-                        </button>
-                    </div>
-                    <div className="col-3">
-                        <button className="p-link w-2rem h-2rem" onClick={() => switchTheme('lara', 'cyan')}>
-                            <img src="https://primefaces.org/cdn/primereact/images/themes/lara-light-teal.png" className="w-2rem h-2rem" alt="Lara Light cyan" />
                         </button>
                     </div>
                     <div className="col-3">
@@ -245,11 +244,6 @@ const AppConfig = (props: AppConfigProps) => {
                     <div className="col-3">
                         <button className="p-link w-2rem h-2rem" onClick={() => switchTheme('arya-green')}>
                             <img src="https://primefaces.org/cdn/primereact/images/themes/arya-green.png" className="w-2rem h-2rem" alt="Fluent Light" />
-                        </button>
-                    </div>
-                    <div className="col-3">
-                        <button className="p-link w-2rem h-2rem" onClick={() => switchTheme('arya-orange')}>
-                            <img src="https://primefaces.org/cdn/primereact/images/themes/arya-orange.png" className="w-2rem h-2rem" alt="Fluent Light" />
                         </button>
                     </div>
                     <div className="col-3">

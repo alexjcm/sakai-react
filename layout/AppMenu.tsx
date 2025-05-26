@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import React from 'react';
 import AppMenuitem from './AppMenuitem';
 import { MenuProvider } from './context/menucontext';
@@ -22,10 +20,8 @@ const AppMenu = () => {
                 { label: 'Table', icon: 'pi pi-fw pi-table', to: '/uikit/table' },
                 { label: 'Panel', icon: 'pi pi-fw pi-tablet', to: '/uikit/panel' },
                 { label: 'Overlay', icon: 'pi pi-fw pi-clone', to: '/uikit/overlay' },
-                { label: 'Media', icon: 'pi pi-fw pi-image', to: '/uikit/media' },
                 { label: 'Menu', icon: 'pi pi-fw pi-bars', to: '/uikit/menu', preventExact: true },
                 { label: 'Message', icon: 'pi pi-fw pi-comment', to: '/uikit/message' },
-                { label: 'File', icon: 'pi pi-fw pi-file', to: '/uikit/file' },
                 { label: 'Misc', icon: 'pi pi-fw pi-circle', to: '/uikit/misc' }
             ]
         },

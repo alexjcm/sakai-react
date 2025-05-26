@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-sync-scripts */
 import React from 'react';
 
 const Documentation = () => {
@@ -27,26 +26,15 @@ const Documentation = () => {
                             <a href="https://github.com/primefaces/sakai-react" className="font-medium hover:underline text-primary">
                                 repository
                             </a>{' '}
-                            from GitHub and install the dependencies with npm or yarn.
+                            from GitHu.
                         </p>
-                        <pre className="app-code">
-                            <code>{`npm install`}</code>
-                        </pre>
-
-                        <p>
-                            Next step is running the application using the start script and navigate to <b>http://localhost:3000/</b> to view the application.
-                        </p>
-
-                        <pre className="app-code">
-                            <code>{`npm run dev`}</code>
-                        </pre>
 
                         <h5>Structure</h5>
                         <p>Sakai consist of a couple of folders where demos and core layout have been separated.</p>
                         <p>
                             There are two{' '}
                             <a href="https://nextjs.org/docs/app/building-your-application/routing/route-groups" className="font-medium hover:underline text-primary">
-                                route groups
+                                Route Groups
                             </a>{' '}
                             under the app folder; <span className="text-primary font-medium">{`(main)`}</span> represents the pages that reside in the main dashboard layout whereas <span className="text-primary font-medium">{`(full-page)`}</span>{' '}
                             groups the pages with full page content such as landing page or a login page.
@@ -80,8 +68,7 @@ const Documentation = () => {
                         </p>
                         <pre className="app-code">
                             <code>
-                                {`"use client"
-import { LayoutProvider } from "./layout/context/layoutcontext";
+                                {`import { LayoutProvider } from "./layout/context/layoutcontext";
 import { PrimeReactProvider } from "primereact/api";
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
@@ -96,7 +83,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link id="theme-css" href={\`/themes/lara-light-indigo/theme.css\`} rel="stylesheet"></link>
+        <link id="theme-css" href={\`/themes/lara-light-cyan/theme.css\`} rel="stylesheet"></link>
       </head>
       <body>
         <PrimeReactProvider>
@@ -182,8 +169,8 @@ export const LayoutProvider = (props) => {
         menuMode: 'static',                     //layout mode of the menu, valid values are "static" or "overlay"
         style: 'lara',                          //general style of the theme
         darkMode: 'light',                   //color scheme of the template, valid values are "light" and "dark"
-        color: 'indigo',                        //general color of the theme
-        theme: 'lara-light-indigo',             //default component theme for PrimeReact
+        color: 'cyan',                        //general color of the theme
+        theme: 'lara-light-cyan',             //default component theme for PrimeReact
         scale: 14                               //size of the body font size to scale the whole application
     });
 }`}

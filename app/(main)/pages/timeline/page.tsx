@@ -1,8 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import React from 'react';
-
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { Timeline } from 'primereact/timeline';
@@ -37,8 +35,6 @@ const TimelineDemo = () => {
         }
     ];
 
-    const horizontalEvents = ['2023', '2024', '2025', '2026'];
-
     const customizedContent = (item: CustomEvent) => {
         return (
             <Card title={item.status} subTitle={item.date}>
@@ -71,19 +67,6 @@ const TimelineDemo = () => {
                 </div>
                 <div className="col-12 md:col-6">
                     <div className="card">
-                        <h5>Right Align</h5>
-                        <Timeline value={customEvents} align="right" content={(item) => item.status} />
-                    </div>
-                </div>
-                <div className="col-12 md:col-6">
-                    <div className="card">
-                        <h5>Alternate Align</h5>
-                        <Timeline value={customEvents} align="alternate" content={(item) => item.status} />
-                    </div>
-                </div>
-
-                <div className="col-12 md:col-6">
-                    <div className="card">
                         <h5>Opposite Content</h5>
                         <Timeline value={customEvents} opposite={(item) => item.status} content={(item) => <small className="p-text-secondary">{item.date}</small>} />
                     </div>
@@ -93,19 +76,6 @@ const TimelineDemo = () => {
                     <div className="card timeline-demo">
                         <h5>Customized</h5>
                         <Timeline value={customEvents} align="alternate" className="customized-timeline" marker={customizedMarker} content={customizedContent} />
-                    </div>
-                </div>
-                <div className="col-12">
-                    <div className="card">
-                        <h5>Horizontal</h5>
-                        <h6>Top Align</h6>
-                        <Timeline value={horizontalEvents} layout="horizontal" content={(item) => item} />
-
-                        <h6>Bottom Align</h6>
-                        <Timeline value={horizontalEvents} layout="horizontal" content={(item) => item} />
-
-                        <h6>Alternate Align</h6>
-                        <Timeline value={horizontalEvents} layout="horizontal" align="alternate" content={(item) => item} opposite={<span>&nbsp;</span>} />
                     </div>
                 </div>
             </div>

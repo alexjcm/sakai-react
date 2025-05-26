@@ -4,9 +4,7 @@ import React from 'react';
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
 import { SplitButton } from 'primereact/splitbutton';
-import { Accordion, AccordionTab } from 'primereact/accordion';
 import { Divider } from 'primereact/divider';
-import { InputText } from 'primereact/inputtext';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
 
 const PanelDemo = () => {
@@ -53,50 +51,16 @@ const PanelDemo = () => {
                     <Toolbar start={toolbarLeftTemplate} end={toolbarRightTemplate}></Toolbar>
                 </div>
             </div>
-            <div className="col-12 md:col-6">
-                <div className="card">
-                    <h5>AccordionPanel</h5>
-                    <Accordion activeIndex={0}>
-                        <AccordionTab header="Header I">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-                                id est laborum.
-                            </p>
-                        </AccordionTab>
-                        <AccordionTab header="Header II">
-                            <p>
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-                            </p>
-                        </AccordionTab>
-                        <AccordionTab header="Header III">
-                            <p>
-                                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
-                                minus.
-                            </p>
-                        </AccordionTab>
-                    </Accordion>
-                </div>
-            </div>
 
             <div className="col-12">
                 <div className="card">
                     <h5>Divider</h5>
                     <div className="grid">
                         <div className="col-5 flex align-items-center justify-content-center">
-                            <div className="p-fluid">
-                                <div className="field">
-                                    <label htmlFor="username">Username</label>
-                                    <InputText id="username" type="text" />
-                                </div>
-                                <div className="field">
-                                    <label htmlFor="password">Password</label>
-                                    <InputText id="password" type="password" />
-                                </div>
-                                <Button label="Login"></Button>
-                            </div>
+                            <p>
+                                Beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit,
+                                sed quia non numquam eius modi.
+                            </p>
                         </div>
                         <div className="col-1">
                             <Divider layout="vertical">
@@ -104,10 +68,7 @@ const PanelDemo = () => {
                             </Divider>
                         </div>
                         <div className="col-5 align-items-center justify-content-center">
-                            <p>
-                                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-                            </p>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
 
                             <Divider layout="horizontal" align="center">
                                 <span className="p-tag">Badge</span>
@@ -115,7 +76,6 @@ const PanelDemo = () => {
 
                             <p>
                                 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt
-                                in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
                                 minus.
                             </p>
 
@@ -123,10 +83,7 @@ const PanelDemo = () => {
                                 <Button label="Button" icon="pi pi-search" outlined></Button>
                             </Divider>
 
-                            <p>
-                                Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut
-                                reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat. Donec vel volutpat ipsum. Integer nunc magna, posuere ut tincidunt eget, egestas vitae sapien. Morbi dapibus luctus odio.
-                            </p>
+                            <p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut</p>
                         </div>
                     </div>
                 </div>

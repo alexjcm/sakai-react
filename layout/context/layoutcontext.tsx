@@ -10,8 +10,8 @@ export const LayoutProvider = ({ children }: ChildContainerProps) => {
         menuMode: 'static',
         style: 'lara',
         darkMode: 'light',
-        color: 'indigo',
-        theme: 'lara-light-indigo',
+        color: 'cyan',
+        theme: 'lara-light-cyan',
         scale: 14
     });
 
